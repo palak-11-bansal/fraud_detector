@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'auth.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -31,15 +32,23 @@ class _TabBarDemoState extends State<TabBarDemo>
   int _selectedIndex = 0;
 
   List<Widget> list = [
-    Tab(text: "Phishing"),
-    Tab(text: "Safe"),
+    Tab(text: "Phishing", icon:  new Icon(Icons.warning_amber_outlined)),
+    Tab(text: "Safe", icon:  new Icon(Icons.assignment_turned_in_outlined)),
   ];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    Fluttertoast.showToast(
+        msg: "You Have Successfully Logged In",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
+        textColor: Colors.black,
+        fontSize: 16.0
+    );
     // Create TabController for getting the index of current tab
 
     _controller = TabController(length: list.length, vsync: this);
@@ -56,9 +65,11 @@ class _TabBarDemoState extends State<TabBarDemo>
   @override
   Widget build(BuildContext context) {
 
+
     return MaterialApp(
 
       home: Scaffold(
+
         appBar: AppBar(
           bottom: TabBar(
             onTap: (index) async {
@@ -74,7 +85,7 @@ class _TabBarDemoState extends State<TabBarDemo>
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
                       title: Text('Permissions error'),
-                      content: Text('Please enable contacts access '
+                      content: Text('Please enable sms access '
                           'permission in system settings'),
                       actions: <Widget>[
                         CupertinoDialogAction(
@@ -107,14 +118,18 @@ class _TabBarDemoState extends State<TabBarDemo>
           controller: _controller,
           children: [
             Center(
-                child: Text(
-                  _selectedIndex.toString(),
-                  style: TextStyle(fontSize: 40),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Here Phishing messages will be displayed. '
+                        'Be Alert!',
+                    style: TextStyle(fontSize: 20),
+                  ),
                 )),
             Center(
                 child: Text(
-                  _selectedIndex.toString(),
-                  style: TextStyle(fontSize: 40),
+                  'These Messages are safe',
+                  style: TextStyle(fontSize: 20),
                 )),
           ],
         ),
@@ -123,12 +138,12 @@ class _TabBarDemoState extends State<TabBarDemo>
   }
   //Check contacts permission
   Future<PermissionStatus> _getPermission() async {
-    final PermissionStatus permission = await Permission.contacts.status;
+    final PermissionStatus permission = await Permission.sms.status;
     if (permission != PermissionStatus.granted &&
         permission != PermissionStatus.denied) {
       final Map<Permission, PermissionStatus> permissionStatus =
-      await [Permission.contacts].request();
-      return permissionStatus[Permission.contacts] ??
+      await [Permission.sms].request();
+      return permissionStatus[Permission.sms] ??
           PermissionStatus.undetermined;
     } else {
       return permission;
