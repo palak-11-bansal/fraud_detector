@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "429003104672",
+    "project_id": "fraud-detector-9a074",
+    "storage_bucket": "fraud-detector-9a074.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429003104672:android:733ae51e19cf04f76b84c5",
+        "android_client_info": {
+          "package_name": "com.example.fraud_detector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429003104672-1bn6eu48l8v63abu7nk3i6g58qang804.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fraud_detector",
+            "certificate_hash": "2ab081a1c1508a5389d6ce0838ff11c02e3b7139"
+          }
+        },
+        {
+          "client_id": "429003104672-ktrbip5b0o0r45m6s5gh69neh8hpr90u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVEAiNR8DR03yCGn94JO5XgEyu2nnhN68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429003104672-ktrbip5b0o0r45m6s5gh69neh8hpr90u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
